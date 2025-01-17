@@ -1,0 +1,46 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>portex</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+    <div class="logo">portex</div>
+    <div class="subtitle">portex - enabling remote access and testing from anywhere.</div>
+
+    <div class="content">
+        <ul>
+            <li>Portex is a tool that creates secure tunnels to make your local services accessible from anywhere on the internet.</li>
+        </ul>
+        <br>
+        {% for code in codes %}
+        <div>
+            <h2>{{ code.header}}</h2>
+            <div class="install">
+                {% if code.code %}
+                <code>
+                    <span>$</span> {{ code.code }}
+                    <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                </code>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <form id="myForm" method="POST">
+        <h4 id="message">Feedback - optional</h4>
+        <input type="text" name="text" required><button type="submit">Send</button>
+    </form>
+    <script src="{% static 'main.js' %}"></script>
+</body>
+
+</html>
