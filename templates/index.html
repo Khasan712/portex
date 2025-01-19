@@ -15,16 +15,15 @@
 
 <body>
     <div class="logo">portex</div>
-    <div class="subtitle">portex - enabling remote access and testing from anywhere.</div>
+<!--    <div class="subtitle">portex - enabling remote access and testing from anywhere.</div>-->
 
     <div class="content">
         <ul>
             <li>Portex is a tool that creates secure tunnels to make your local services accessible from anywhere on the internet.</li>
         </ul>
-        <br>
         {% for code in codes %}
-        <div>
-            <h2>{{ code.header}}</h2>
+        <div class="c-dev">
+            <h3 class="install-h3">{{ code.header}}</h3>
             <div class="install">
                 {% if code.code %}
                 <code>
@@ -33,13 +32,19 @@
                 </code>
                 {% endif %}
             </div>
+            {% if code.extra_info %}
+                <p class="dev-p" >{{ code.extra_info }}</p>
+            {% endif %}
         </div>
         {% endfor %}
+
+        <form id="myForm" class="c-form" method="POST">
+            <h3 id="message" class="install-h3">Feedback - optional</h3>
+<!--            <input type="text" name="text" required class="my-input" value="Hello">-->
+            <textarea name="" class="my-text" rows="4"></textarea>
+            <button type="submit">Send</button>
+        </form>
     </div>
-    <form id="myForm" method="POST">
-        <h4 id="message">Feedback - optional</h4>
-        <input type="text" name="text" required><button type="submit">Send</button>
-    </form>
     <script src="{% static 'main.js' %}"></script>
 </body>
 

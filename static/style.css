@@ -1,179 +1,296 @@
-      body {
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
 
-          margin: 0;
-          padding: 0;
-          background-color: #121418;
-          color: white;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          padding: 20px;
-          font-family: "Oswald", serif;
-      }
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #121418;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    font-family: "Oswald", serif;
+}
 
-      .logo {
-          font-size: 48px;
-          font-weight: bold;
-          margin-bottom: 10px;
-      }
+.logo {
+    font-size: 45px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+}
 
-      .subtitle {
-          font-size: 18px;
-          margin-bottom: 30px;
-      }
+.subtitle {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
 
-      .star-button {
-          display: flex;
-          gap: 10px;
-          margin-bottom: 40px;
-      }
+.star-button {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 40px;
+}
 
-      .star-button button {
-          background-color: #ffdd00;
-          border: none;
-          padding: 10px 20px;
-          font-size: 14px;
-          cursor: pointer;
-          border-radius: 4px;
-      }
+.star-button button {
+    background-color: #ffdd00;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 4px;
+}
 
-      .content {
-          max-width: 800px;
+.content {
+    max-width: 800px;
+    width: 100%;
+    padding: 0 20px;
+}
 
-      }
+.content ul {
+    list-style: none;
+    padding: 0;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
 
-      .content h2 {
-          font-size: 24px;
-          margin-bottom: 15px;
-      }
+.content ul li {
+    margin-bottom: 10px;
+}
 
-      .content ul {
-          list-style: none;
-          padding: 0;
-          font-size: 18px;
-          margin-bottom: 30px;
-      }
+.c-dev {
+    border: 1px solid #555454;
+    border-radius: 10px;
+    margin-top: 20px;
+    padding: 15px;
+}
 
-      .content ul li {
-          margin-bottom: 10px;
-      }
+.install-h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
 
-      .install {
-          width: 740px;
-          font-size: 20px;
-          background-color: #555454;
-          padding: 20px;
-          color: white;
-          border-radius: 8px;
-          font-family: monospace;
-          display: inline-block;
-          position: relative;
-      }
+.install {
+    width: 100%;
+    font-size: 20px;
+    background-color: #555454;
+    padding: 20px;
+    color: white;
+    border-radius: 8px;
+    font-family: monospace;
+    display: inline-block;
+    position: relative;
 
-      .install code {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-      }
+}
 
-      .install span {
-          background: #000;
-          color: #fff;
-          padding: 2px 5px;
-          border-radius: 4px;
-      }
-
-      .copy-btn {
-          margin-left: 10px;
-          background-color: #007bff;
-          color: #fff;
-          border: none;
-          padding: 5px 10px;
-          border-radius: 4px;
-          cursor: pointer;
-          transition: background-color 0.3s;
-      }
-
-      .copy-btn.copied {
-          background-color: #28a745;
-      }
-
-      .copy-btn.copied::after {
-          content: 'Copied';
-          color: #fff;
-          margin-left: 5px;
-      }
-
-      h4 {
-          margin-top: 50px;
-      }
-
-      form {
-          width: 780px;
-      }
-
-      input {
-          font-family: "Oswald", serif;
-          background-color: #2a2e35b9;
-          resize: none;
-          outline: none;
-          border: 2px solid black;
-          border-radius: 15px;
-          color: white;
-          width: 750px;
-          padding: 15px 15px 150px 15px;
-          margin: auto;
-          text-align: left;
-          vertical-align: top;
-          font-size: 18px;
-          margin-top: 10px;
-      }
-
-      form button {
-          padding: 12px 0;
-          margin: auto;
-          display: block;
-          width: 780px;
-          margin-top: 8px;
-          background-color: #28a745;
-          color: white;
-          font-size: 20px;
-          letter-spacing: 1.2px;
-          border-radius: 8px;
-          border: none;
-      }
+.install code {
+    display: flex;
+    align-items: start;
 
 
+}
+
+.install span {
+    background: #000;
+    color: #fff;
+    padding: 2px 5px;
+    border-radius: 4px;
+    margin-right: 4px;
+}
+
+.copy-btn {
+    margin-left: auto;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.copy-btn.copied {
+    background-color: #28a745;
+}
+
+.copy-btn.copied::after {
+    content: 'Copied';
+    color: #fff;
+    margin-left: 5px;
+}
+
+.dev-p {
+    margin-top: 15px;
+    font-family: roboto;
+    font-size: 18px;
+}
+
+form {
+    width: 100%;
+    margin: 20px 0;
+}
 
 
+.my-text {
+    width: 100%;
+    font-family: "Oswald", serif;
+    background-color: #2a2e35b9;
+    resize: none;
+    outline: none;
+    border: 2px solid black;
+    border-radius: 15px;
+    color: white;
+    margin: 0 auto;
+    text-align: left;
+    font-size: 18px;
+    padding: 15px
+}
 
 
-      /* Telefonlar uchun layout sozlash */
-      @media (max-width: 550px) {
-          .content ul {
-              width: 320px;
-              margin: auto;
-          }
+form button {
+    padding: 12px 0;
+    margin: auto;
+    display: block;
+    width: 100%;
+    margin-top: 8px;
+    background-color: #007bff;
+    color: white;
+    font-size: 20px;
+    letter-spacing: 1.2px;
+    border-radius: 8px;
+    border: none;
+}
 
-          .install {
-              width: 320px;
-              font-size: 8px;
-          }
+.tt {
+    display: none;
+}
 
-          form {
-              margin-right: 35px;
-              width: 320px;
-          }
+/* Telefonlar va kichik ekranlar uchun layout sozlash */
+@media (max-width: 550px) {
+    .tt {
+        display: block;
+    }
 
-          form input {
+    .logo {
 
-              width: 100%;
-          }
+        font-size: 30px;
+    }
 
-          form button {
-              width: 100%;
-              display: flex;
-              text-align: center;
-              justify-content: center;margin-left: 20px;
-          }
-      }
+    .subtitle {
+        font-size: 14px;
+    }
+
+    .star-button {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .star-button button {
+        margin-bottom: 10px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .content {
+        padding: 0 10px;
+    }
+
+    .content ul {
+        width: 100%;
+        margin: 0;
+        padding-left: 0;
+    }
+
+    .install {
+        width: 92%;
+        font-size: 16px;
+    }
+
+    form {
+        width: 100%;
+    }
+
+/*    input {
+        width: 92%;
+        font-size: 16px;
+        padding: 12px;
+    }*/
+
+    form button {
+        font-size: 18px;
+    }
+}
+
+/* Kichik telefonlar uchun maxsus sozlash */
+@media (max-width: 375px) {
+    .logo {
+
+        font-size: 28px;
+    }
+
+    .subtitle {
+        font-size: 12px;
+    }
+
+    .star-button {
+        gap: 8px;
+    }
+
+    .star-button button {
+        padding: 8px 15px;
+        font-size: 12px;
+        width: 100%;
+    }
+
+    .content {
+        padding: 0 5px;
+    }
+
+    .install {
+        width: 100%;
+        font-size: 14px;
+    }
+
+/*    input {
+        font-size: 14px;
+        padding: 10px;
+    }*/
+
+    form button {
+        font-size: 16px;
+        padding: 10px 0;
+    }
+}
+
+/* Tabletlar uchun layout sozlash */
+@media (max-width: 768px) {
+    .content {
+        padding: 0 15px;
+    }
+
+    .logo {
+        font-size: 42px;
+    }
+
+    .install {
+        width: 92%;
+        font-size: 13px;
+    }
+
+/*input {
+        width: 92%;
+        font-size: 17px;
+    }
+
+    form button {
+        margin: 0;
+        width: 97%;
+        margin-top: 8px;
+        font-size: 19px;
+    }
+}*/
+
+.install code span {
+    margin-right: 5px;
+}
