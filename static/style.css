@@ -111,11 +111,10 @@ body {
 }
 
 .copy-btn.copied {
-    background-color: #28a745;
+    background-color: #2a2e35b9;
 }
 
 .copy-btn.copied::after {
-    content: 'Copied';
     color: #fff;
     margin-left: 5px;
 }

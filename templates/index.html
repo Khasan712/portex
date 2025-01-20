@@ -1,51 +1,60 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>portex</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'style.css' %}">
-</head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+  </head>
 
-<body>
+  <body>
     <div class="logo">portex</div>
-<!--    <div class="subtitle">portex - enabling remote access and testing from anywhere.</div>-->
+    <!--    <div class="subtitle">portex - enabling remote access and testing from anywhere.</div>-->
 
     <div class="content">
-        <ul>
-            <li>Portex is a tool that creates secure tunnels to make your local services accessible from anywhere on the internet.</li>
-        </ul>
-        {% for code in codes %}
-        <div class="c-dev">
-            <h3 class="install-h3">{{ code.header}}</h3>
-            <div class="install">
-                {% if code.code %}
-                <code>
-                    <span>$</span> {{ code.code }}
-                    <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
-                </code>
-                {% endif %}
-            </div>
-            {% if code.extra_info %}
-                <p class="dev-p" >{{ code.extra_info }}</p>
-            {% endif %}
-        </div>
-        {% endfor %}
+      <ul>
+        <li>
+          Portex is a tool that creates secure tunnels to make your local
+          services accessible from anywhere on the internet.
+        </li>
+      </ul>
+      {% for code in codes %}
+      <div class="c-dev">
+        <h3 class="install-h3">{{ code.header}}</h3>
+        <div class="install">
+          {% if code.code %}
 
-        <form id="myForm" class="c-form" method="POST">
-            <h3 id="message" class="install-h3">Feedback - optional</h3>
-<!--            <input type="text" name="text" required class="my-input" value="Hello">-->
-            <textarea name="" class="my-text" rows="4"></textarea>
-            <button type="submit">Send</button>
-        </form>
+          <code>
+            <span>$</span> {{ code.code }}
+            <button
+              class="copy-btn"
+              onclick="copyToClipboard('{{ code.code }}', this)"
+            >
+              Copy
+            </button>
+          </code>
+
+          {% endif %}
+        </div>
+        {% if code.extra_info %}
+        <p class="dev-p">{{ code.extra_info }}</p>
+        {% endif %}
+      </div>
+      {% endfor %}
+
+      <form id="myForm" class="c-form" method="POST">
+        <h3 id="message" class="install-h3">Feedback - optional</h3>
+        <textarea name="text" class="my-text" rows="4"></textarea>
+        <button type="submit">Send</button>
+      </form>
     </div>
     <script src="{% static 'main.js' %}"></script>
-</body>
-
+  </body>
 </html>
