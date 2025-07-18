@@ -15,6 +15,11 @@
   </head>
 
   <body>
+
+    {% for message in messages %}
+      <div class="feedback-pop">{{ message }}</div>
+    {% endfor %}
+
     <div class="logo">portex</div>
     <!--    <div class="subtitle">portex - enabling remote access and testing from anywhere.</div>-->
 
@@ -32,7 +37,7 @@
           {% if code.code %}
 
           <code>
-            <span>$</span> {{ code.code }}
+            <span>$</span> <div class="code-text">{{ code.code }}</div>
             <button
               class="copy-btn"
               onclick="copyToClipboard('{{ code.code }}', this)"

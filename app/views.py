@@ -3,14 +3,14 @@ import json
 import asyncio
 from django.views import View
 from django.conf import settings
-from django.shortcuts import render, redirect
+from django.contrib import messages
 from asgiref.sync import async_to_sync
-from django.http import FileResponse, JsonResponse, HttpResponse, HttpResponseRedirect
-from rest_framework.response import Response
+from django.shortcuts import render, redirect, reverse
+from django.http import FileResponse, JsonResponse, HttpResponse
 
-from .constants import MAIN_DOMAIN
 from .consumers import connected_clients
 from .models import CodeBase, FeedBack
+from .tasks import save_downloader
 
 
 def home(request):
@@ -21,6 +21,7 @@ def install_sh(request):
     file_path = os.path.join(settings.MEDIA_ROOT, 'install.sh')
     with open(file_path, 'r') as file:
         content = file.read()
+    save_downloader.delay(request.META)
     return FileResponse(content, as_attachment=True, filename='install.sh', content_type='text/x-shellscript')
 
 
@@ -32,9 +33,10 @@ class ProxyView(View):
 
     def get(self, request, path):
         host = self.request.get_host()
-        print(host)
-        print(settings.MAIN_HOST)
         if host == settings.MAIN_HOST:
+            meta = request.META.get('HTTP_X_FORWARDED_FOR')
+            ip = request.META.get('REMOTE_ADDR')
+            print(meta, ip, '---------------11-1-11')
             context = {
                 "codes": self.get_code_base_queryset()
             }
@@ -48,7 +50,8 @@ class ProxyView(View):
             print(text)
             if text:
                 FeedBack.objects.create(text=text)
-            return HttpResponseRedirect(f'http://{settings.MAIN_HOST}')
+                messages.success(request, 'Thanks for feedback!')
+            return redirect(reverse('proxy', kwargs={'path': ''}))
         return self._proxy_request(request, path)
 
     def put(self, request, path):
@@ -67,7 +70,7 @@ class ProxyView(View):
         try:
             # Extract the subdomain from the host header
             subdomain = request.headers.get("Host").split('.')[0]
-            subdomain = 'a'  # (Replace this with actual subdomain extraction logic)
+            # subdomain = 'a'
 
             # Check if the subdomain exists in connected clients
             if subdomain not in connected_clients:

@@ -23,6 +23,7 @@ class FeedBack(models.Model):
 
 
 class DownloadApp(models.Model):
+    info = models.CharField(max_length=300)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
